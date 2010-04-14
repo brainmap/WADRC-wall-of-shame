@@ -1,0 +1,35 @@
+<div class="large-graph">
+	
+	<p class="title">
+		<span class="label"><%= @directory.label %></span>
+		<span class="actions">
+			<%= link_to 'edit', edit_directory_path(@directory) %>
+			<%= link_to 'remove', @directory, :confirm => 'Are you sure?', :method => :delete %>
+		</span>
+	</p>
+	
+	<p class="subtitle">
+		<span class="dirpath"><%= @directory.path %></span>
+	</p>
+
+	<div id="linechart" style="width:100%;height:300px"></div>
+	<%= javascript_tag @directory.chart(:within => 1.year).output('linechart') %>
+	
+</div>
+
+<div class="directory-status">
+	
+	<h2>
+		<% unless @directory.measurements.empty? %>
+			<%= "%0.2f" % @directory.measurements.last.gb_size %> GB&nbsp;
+			<%= "%+0.1f" % @directory.weekly_change %>%
+		<% end %>
+	</h2>
+	
+</div>
+
+<br />
+
+<p>
+<%= link_to 'Back to the wall', directories_path %>
+</p>

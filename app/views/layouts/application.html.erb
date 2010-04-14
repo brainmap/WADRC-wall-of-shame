@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Directories: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+  <%= javascript_include_tag :defaults %>
+  <%= raw chartr_includes %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<div id="centered-page">
+	
+<p class="notice"><%= notice %></p>
+
+<h1 class="app-title">WADRC Imaging Core Wall of Shame</h1>
+
+<%= yield %>
+
+</div>
+
+</body>
+</html>
