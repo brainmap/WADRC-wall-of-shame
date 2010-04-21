@@ -20,7 +20,8 @@ class Directory < ActiveRecord::Base
 		linechart = Chartr::LineChart.new({
 			:xaxis => { :ticks => xepochs.zip(xlabels), :min => xepochs.last, :max => xepochs.first },
 			:grid => { :color => '#555', :tickColor => '#333' },
-			:points => { :show => true, :fill => true, :radius => 2, :fillColor => '#000'}, :lines => { :show => true }
+			:points => { :show => true, :fill => true, :radius => 2, :fillColor => '#000'},
+			:lines => { :show => true }
 		})
 		linechart.data = [epochs.zip(sizes)]
 		
