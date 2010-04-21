@@ -18,7 +18,7 @@ set :repository, "git@github.com:brainmap/WADRC-wall-of-shame.git"
 set :branch, "master"
 
 set :mongrel_cmd, "/usr/bin/mongrel_rails"
-set :mongrel_ports, "80"
+set :mongrel_port, "80"
 set :mongrel_pid, "tmp/pids/mongrel.pid"
 
 
@@ -34,17 +34,13 @@ namespace :deploy do
   end
   desc "Start Mongrels processes and add them to launchd."
   task :start, :roles => :app do
-    mongrel_ports.each do |port|
-      sudo "#{mongrel_cmd} start --port #{port} --pid #{mongrel_pid} \
-            -e production --user #{user} --group #{group} -c #{current_path} -d"
-    end
+  	sudo "#{mongrel_cmd} start --port #{mongrel_port} --pid #{mongrel_pid} \
+    	-e production --user #{user} --group #{group} -c #{current_path} -d"
   end
 
   desc "Stop Mongrels processes and remove them from launchd."
   task :stop, :roles => :app do
-    mongrel_ports.each do |port|
-      sudo "#{mongrel_cmd} stop -c #{current_path} -p #{mongrel_pid}"
-    end
+  	sudo "#{mongrel_cmd} stop -c #{current_path} -p #{mongrel_pid}"
   end
 
   desc "Restart Mongrel processes"
