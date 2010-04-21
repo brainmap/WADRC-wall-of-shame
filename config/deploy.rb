@@ -13,7 +13,7 @@ set :deploy_to, "/Library/WebServer/wall-of-shame"
 
 set :scm, "git"
 #set :scm_command, "/usr/local/git/bin/git"
-set :git, "/usr/local/bin/git"
+set :git, "/usr/local/git/bin/git"
 set :repository, "git@github.com:brainmap/WADRC-wall-of-shame.git"
 set :branch, "master"
 
