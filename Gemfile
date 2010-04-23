@@ -25,3 +25,4 @@ gem "sqlite3-ruby", :require => "sqlite3"
 # end
 
 gem 'mongrel'
+gem 'thin'

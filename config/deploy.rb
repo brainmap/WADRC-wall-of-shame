@@ -22,12 +22,6 @@ set :thin_cmd, "/Users/rails_deployer/.rvm/gems/ruby-1.9.2-head/gems/thin-1.2.7/
 set :thin_pid, "tmp/pids/thin.pid"
 set :thin_port, "80"
 
-set :mongrel_cmd, "/usr/bin/mongrel_rails"
-set :mongrel_port, "80"
-set :mongrel_pid, "tmp/pids/mongrel.pid"
-
-
-
 
 namespace :deploy do
   # task :update_code
