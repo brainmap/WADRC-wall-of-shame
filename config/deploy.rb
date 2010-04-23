@@ -17,6 +17,11 @@ set :git, "/usr/local/git/bin/git"
 set :repository, "git@github.com:brainmap/WADRC-wall-of-shame.git"
 set :branch, "master"
 
+set :ruby_cmd, "/Users/rails_deployer/.rvm/bin/ruby-1.9.2-head"
+set :thin_cmd, "/Users/rails_deployer/.rvm/gems/ruby-1.9.2-head/gems/thin-1.2.7/bin/thin"
+set :thin_pid, "tmp/pids/thin.pid"
+set :thin_port, "80"
+
 set :mongrel_cmd, "/usr/bin/mongrel_rails"
 set :mongrel_port, "80"
 set :mongrel_pid, "tmp/pids/mongrel.pid"
@@ -32,18 +37,17 @@ namespace :deploy do
   task :symlink_shared do
     run "ln -nfs #{shared_path}/db/production.sqlite3 #{release_path}/db/production.sqlite3"
   end
-  desc "Start Mongrels processes and add them to launchd."
+  desc "Start the Thin server."
   task :start, :roles => :app do
-  	sudo "#{mongrel_cmd} start --port #{mongrel_port} --pid #{mongrel_pid} \
-    	-e production --user #{user} --group #{group} -c #{current_path} -d"
+  	sudo "#{ruby_cmd} #{thin_cmd} start --port #{thin_port} -e production -c #{current_path} -d"
   end
 
-  desc "Stop Mongrels processes and remove them from launchd."
+  desc "Stop the Thin server."
   task :stop, :roles => :app do
-  	sudo "#{mongrel_cmd} stop -c #{current_path} -p #{mongrel_pid}"
+  	sudo "#{ruby_cmd} #{thin_cmd} stop -c #{current_path} -p #{thin_pid}"
   end
 
-  desc "Restart Mongrel processes"
+  desc "Restart Thin processes"
   task :restart, :roles => :app do
     run "touch #{current_path}/tmp/restart.txt"
   end
