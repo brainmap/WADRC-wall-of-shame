@@ -15,6 +15,7 @@ class DirectoriesController < ApplicationController
 	# GET /directories/1.xml
 	def show
 		@directory = Directory.find(params[:id])
+		@days = params[:days].blank? ? 31 : params[:days].to_i
 		
 		respond_to do |format|
 			format.html # show.html.erb

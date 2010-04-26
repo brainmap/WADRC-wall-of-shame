@@ -4,4 +4,10 @@ module DirectoriesHelper
 			:class => (@days == days) ? :active : :inactive
 		)
 	end
+	
+	def tab_to_dir(directory, days, label)
+		content_tag(:li, link_to(label, directory_path(directory, :days => days)),
+			:class => (@days == days) ? :active : :inactive
+		)
+	end
 end

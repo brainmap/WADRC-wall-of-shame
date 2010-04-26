@@ -12,8 +12,11 @@
 		<span class="dirpath"><%= @directory.path %></span>
 	</p>
 
-	<div id="linechart" style="width:100%;height:300px"></div>
-	<%= javascript_tag @directory.chart(:within => 1.year).output('linechart') %>
+	<!-- <div id="linechart" style="width:100%;height:300px"></div>
+	<%= javascript_tag @directory.chart(:within => 1.year).output('linechart') %> -->
+	
+	<%= content_tag :div, nil, :id => "linechart", :style => "width:100%; height:300px" %>
+	<%= javascript_tag @directory.chart(:within => @days.days, :num_x_axis_labels => 15).output('linechart') %>
 	
 </div>
 
@@ -31,5 +34,13 @@
 <br />
 
 <div class="masthead top-border">
-	<p class="top left"><%= link_to 'Back to the wall', directories_path %></p>
+	<ul class="navtabs top left">
+		<%= tab_to_dir @directory, 1,    '1 day'    %>
+		<%= tab_to_dir @directory, 7,    '1 week'   %>
+		<%= tab_to_dir @directory, 14,   '2 weeks'  %>
+		<%= tab_to_dir @directory, 31,   '1 month'  %>
+		<%= tab_to_dir @directory, 182,  '6 months' %>
+		<%= tab_to_dir @directory, 365,  '1 year'   %>
+	</ul>
+	<p class="top right"><%= link_to 'Back to the wall', directories_path %></p>
 </div>
