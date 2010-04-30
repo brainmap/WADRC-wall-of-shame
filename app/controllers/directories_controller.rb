@@ -2,7 +2,7 @@ class DirectoriesController < ApplicationController
 	# GET /directories
 	# GET /directories.xml
 	def index
-		@directories = Directory.all
+		@directories = Directory.order("position ASC")
 		@days = params[:days].blank? ? 31 : params[:days].to_i
 
 		respond_to do |format|
@@ -81,5 +81,13 @@ class DirectoriesController < ApplicationController
 			format.html { redirect_to(directories_url) }
 			format.xml	{ head :ok }
 		end
+	end
+	
+	# for sortable directories
+	def sort
+	  params[:directories].each_with_index do |id, index|
+	    Directory.update_all(['position=?', index+1], ['id=?', id])
+	  end
+	  render :nothing => true
 	end
 end

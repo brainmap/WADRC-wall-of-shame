@@ -1,5 +1,9 @@
 WallOfShame::Application.routes.draw do |map|
-  resources :directories
+  resources :directories do
+  	collection do
+  		post :sort
+  	end
+	end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -9,13 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100310183001) do
+ActiveRecord::Schema.define(:version => 20100430181451) do
 
   create_table "directories", :force => true do |t|
     t.string   "path"
     t.string   "label"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
 
   create_table "measurements", :force => true do |t|

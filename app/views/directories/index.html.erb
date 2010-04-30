@@ -1,9 +1,13 @@
-<ul class="graph-list">
+<ul id="directories" class="graph-list">
 	<% @directories.each_with_index do |d,i| %>
-		<li>
+	
+		<% content_tag_for :li, d do %>
 			<div class="small-graph">
 				
-				<p><%= link_to d.label, d, :class => 'title' %></p>
+				<p>
+					<span class="handle" style="font-size:18pt; color:#555;">✙ </span>
+					<%= link_to d.label, d, :class => 'title' %>
+				</p>
 				
 				<p class="stats">
 					<% unless d.measurements.empty? %>
@@ -19,9 +23,11 @@
 				<%= javascript_tag d.chart(:within => @days.days, :num_x_axis_labels => 7).output(div_id) %>
 				
 			</div>
-		</li>
+		<% end %>
+		
 	<% end %>
 </ul>
+<%= sortable_element("directories", :url => sort_directories_path, :handle => "handle", :constraint => false, :overlap => :horizontal) %>
 
 <br />
 

@@ -2,10 +2,6 @@
 	
 	<p class="title">
 		<span class="label"><%= @directory.label %></span>
-		<span class="actions">
-			<%= link_to 'edit', edit_directory_path(@directory) %>
-			<%= link_to 'remove', @directory, :confirm => 'Are you sure?', :method => :delete %>
-		</span>
 	</p>
 	
 	<p class="subtitle">
@@ -42,5 +38,8 @@
 		<%= tab_to_dir @directory, 182,  '6 months' %>
 		<%= tab_to_dir @directory, 365,  '1 year'   %>
 	</ul>
-	<p class="top right"><%= link_to 'Back to the wall', directories_path %></p>
+	<p class="top right">
+		<%= link_to 'edit', edit_directory_path(@directory) %>
+		<%= link_to 'remove', @directory, :confirm => 'Are you sure?', :method => :delete %>
+	</p>
 </div>

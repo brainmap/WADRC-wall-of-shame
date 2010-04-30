@@ -1,5 +1,7 @@
 class Directory < ActiveRecord::Base
 	has_many :measurements
+	acts_as_list
+	
 	
 	def chart(options={})
 		defaults = { :within => nil, :num_x_axis_labels => 15 }

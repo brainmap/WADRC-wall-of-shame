@@ -98,3 +98,9 @@ li.active a { color:white; }
 
 .bottom-border { border-bottom:solid thin #ccf; margin-bottom:8pt; }
 .top-border { border-top:solid thin #ccf; }
+
+li .handle {
+  font-size: 12px;
+  cursor: move;
+  color: #777;
+}
