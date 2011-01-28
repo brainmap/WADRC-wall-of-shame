@@ -30,10 +30,17 @@ class Directory < ActiveRecord::Base
 		return linechart
 	end
 	
+  # Returns a measurement of the weekly change if there were any measurements
+  # from the last week.
 	def weekly_change
-		m0 = measurements.where("created_at >= ?", 1.week.ago).first.size.to_f
-		m1 = measurements.last.size.to_f
-		100 * (m1 - m0) / m0
+		weekly_measurements = measurements.where("created_at >= ?", 1.week.ago)
+    unless weekly_measurements.blank?
+		  m0 = weekly_measurements.first.size.to_f
+		  m1 = weekly_measurements.last.size.to_f
+		  100 * (m1 - m0) / m0
+	  else
+	    0
+	  end
 	end
 	
 	def change_since(date, options={})
