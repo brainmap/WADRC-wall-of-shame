@@ -1,7 +1,7 @@
 <ul id="directories" class="graph-list">
 	<% @directories.each_with_index do |d,i| %>
 	
-		<% content_tag_for :li, d do %>
+		<%= content_tag_for :li, d do %>
 			<div class="small-graph">
 				
 				<p>

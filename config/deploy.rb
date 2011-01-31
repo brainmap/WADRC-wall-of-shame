@@ -27,9 +27,14 @@ namespace :deploy do
   # task :update_code
   # task :symlink
   
+  desc "Update the current symlink."
+  task :symlink do
+    sudo "rm -f #{current_path} && ln -s #{release_path} #{current_path}"
+  end
+  
   desc "Symlink shared configs and folders on each release."
   task :symlink_shared do
-    run "ln -nfs #{shared_path}/db/production.sqlite3 #{release_path}/db/production.sqlite3"
+    sudo "ln -nfs #{shared_path}/db/production.sqlite3 #{release_path}/db/production.sqlite3"
   end
   desc "Start the Thin server."
   task :start, :roles => :app do

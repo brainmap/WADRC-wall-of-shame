@@ -21,7 +21,7 @@
 	<h2>
 		<% unless @directory.measurements.empty? %>
 			<%= "%0.2f" % @directory.measurements.last.gb_size %> GB&nbsp;
-			<%= "%+0.1f" % @directory.weekly_change %>%
+			<%= "%+0.1f" % @directory.change_since(1.week.ago) %>%
 		<% end %>
 	</h2>
 	
