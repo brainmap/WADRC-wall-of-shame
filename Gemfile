@@ -2,7 +2,7 @@
 source 'http://gemcutter.org'
 
 
-gem "rails"
+gem "rails", '~> 3'
 
 ## Bundle edge rails:
 # gem "rails", :git => "git://github.com/rails/rails.git"
@@ -24,5 +24,5 @@ gem "sqlite3-ruby", :require => "sqlite3"
 #   gem "webrat"
 # end
 
-gem 'mongrel'
-gem 'thin'
+# gem 'mongrel'
+# gem 'thin'

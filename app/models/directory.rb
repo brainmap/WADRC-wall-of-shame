@@ -14,8 +14,8 @@ class Directory < ActiveRecord::Base
 		xepochs = xdates.map { |d| d.to_i }
 		xlabels = xdates.map { |d| d.strftime('%m/%d') }
 		
-		epochs = measurements.map { |m| m.created_at.to_i }
-		sizes = measurements.map { |m|
+		epochs = measurements.reject {|m| m.size.blank? }.map { |m| m.created_at.to_i }
+		sizes = measurements.reject {|m| m.size.blank? }.map { |m|
 			(m.size > 2**20) ? m.gb_size : m.mb_size
 		}
 		
