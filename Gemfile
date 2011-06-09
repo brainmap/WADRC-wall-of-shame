@@ -2,7 +2,8 @@
 source 'http://gemcutter.org'
 
 
-gem "rails", '~> 3'
+gem "rails", '~> 3.0'
+gem 'rake'
 
 ## Bundle edge rails:
 # gem "rails", :git => "git://github.com/rails/rails.git"
@@ -16,7 +17,7 @@ gem "sqlite3-ruby", :require => "sqlite3"
 # gem "hpricot", "0.6"
 # gem "sqlite3-ruby", :require => "sqlite3"
 # gem "aws-s3", :require => "aws/s3"
-# gem 'whenever', :lib => false, :source => 'http://gemcutter.org/'
+gem 'whenever', :lib => false
 
 ## Bundle gems used only in certain environments:
 # gem "rspec", :group => :test
