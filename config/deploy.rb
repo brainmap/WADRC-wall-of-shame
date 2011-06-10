@@ -23,6 +23,7 @@ set :repository, "git@github.com:brainmap/WADRC-wall-of-shame.git"
 set :branch, "master"
 
 set :rvm_ruby_string, '1.9.2'
+set :whenever_command, "bundle exec whenever"
 
 # set :ruby_cmd, "/Users/rails_deployer/.rvm/bin/ruby-1.9.2-head"
 # set :thin_cmd, "/Users/rails_deployer/.rvm/gems/ruby-1.9.2-head/gems/thin-1.2.7/bin/thin"
